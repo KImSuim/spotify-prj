@@ -2,30 +2,16 @@
 
 import Image from "next/image";
 import { Album } from "@/common/Type/type";
+import {
+  getImageInfo,
+  getTextInfo,
+  ImageInfo,
+  TextInfo,
+} from "@/common/parameter/parameters";
 
 export const AlbumItem = ({ album }: { album: Album }) => {
-  // 텍스트 정보 배열
-  const textInfo = [
-    { label: "ID", value: album.id },
-    { label: "앨범이름", value: album.albumsName },
-    { label: "발행일", value: album.releaseDate },
-    { label: "아티스트", value: album.artistName },
-    { label: "인기도", value: album.popularity },
-    { label: "팔로워", value: album.followers },
-    { label: "장르", value: album.genres.join(", ") },
-    { label: "트랙(노래 제목)", value: album.trackName },
-    { label: "재생시간", value: album.trackDuration },
-  ];
-
-  // 이미지 정보 배열
-  const imageInfo = [
-    { src: album.albumImageUrl, alt: album.albumsName, label: "앨범 이미지" },
-    {
-      src: album.artistsImageUrl,
-      alt: album.artistName,
-      label: "아티스트 이미지",
-    },
-  ];
+  const textInfo: TextInfo[] = getTextInfo(album);
+  const imageInfo: ImageInfo[] = getImageInfo(album);
 
   return (
     <li className="p-1 mb-2 border-2">

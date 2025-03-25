@@ -20475,21 +20475,6 @@ const AlbumComponent = () => {
       // ✅ Firestore에 저장할 앨범 리스트 확인
       console.log(`추가할 앨범 개수: ${Albums.length}개`);
 
-      // ✅ Firestore에 데이터 추가 (문서 ID 자동 생성)
-
-      // const albumPromises = Albums.map((Albums) => {
-      //   const albumSizeKB = JSON.stringify(Albums).length / 1024;
-      //   console.log(
-      //     `📦 저장할 앨범: ${Albums.name}, 데이터 크기: ${albumSizeKB.toFixed(
-      //       2
-      //     )} KB`
-      //   );
-
-      //   return addDoc(albumCollection, Albums).then(() => {
-      //     console.log(`✅ Firestore에 저장 완료: ${Albums.name}`);
-      //   });
-      // });
-
       const albumPromises = Albums.map(async (album) => {
         const albumDocRef = doc(albumCollection, album.id); // ID를 직접 지정
         const docSnapshot = await setDoc(albumDocRef, album);

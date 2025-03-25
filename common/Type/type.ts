@@ -62,3 +62,11 @@ export type DetailProps = {
 export type TrackProps = {
   params: { trackName: string };
 };
+
+export type InputFieldProps = {
+  inputInfo: string; // input 설명 이름
+  inputValue: string; // input 데이터
+  inputType: "text" | "number";
+  //값이 string 또는 number를 뜻함
+  onInputChange: (value: string | number) => void;
+};
